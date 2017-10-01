@@ -1,0 +1,53 @@
+# Logfile created on 2017-10-01 10:25:16 +0000 by logger.rb/56438
+[2017-10-01T10:25:16+00:00] INFO: Started chef-zero at chefzero://localhost:8889 with repository at /opt/gitlab/embedded
+  One version per cookbook
+
+[2017-10-01T10:25:16+00:00] INFO: Forking chef instance to converge...
+[2017-10-01T10:25:16+00:00] INFO: *** Chef 12.12.15 ***
+[2017-10-01T10:25:16+00:00] INFO: Platform: x86_64-linux
+[2017-10-01T10:25:16+00:00] INFO: Chef-client pid: 30
+[2017-10-01T10:25:17+00:00] WARN: unable to detect ipaddress
+[2017-10-01T10:25:22+00:00] INFO: HTTP Request Returned 404 Not Found: Object not found: chefzero://localhost:8889/nodes/git.xscru.com
+[2017-10-01T10:25:22+00:00] INFO: Setting the run_list to ["recipe[gitlab]"] from CLI options
+[2017-10-01T10:25:22+00:00] INFO: Run List is [recipe[gitlab]]
+[2017-10-01T10:25:22+00:00] INFO: Run List expands to [gitlab]
+[2017-10-01T10:25:22+00:00] INFO: Starting Chef Run for git.xscru.com
+[2017-10-01T10:25:22+00:00] INFO: Running start handlers
+[2017-10-01T10:25:22+00:00] INFO: Start handlers complete.
+[2017-10-01T10:25:22+00:00] INFO: HTTP Request Returned 404 Not Found: Object not found: 
+[2017-10-01T10:25:59+00:00] INFO: Loading cookbooks [gitlab@0.0.1, package@0.1.0, registry@0.1.0, consul@0.0.0, runit@0.14.2]
+[2017-10-01T10:26:12+00:00] WARN: Runtime directory '/run' is not a tmpfs.
+[2017-10-01T10:26:13+00:00] WARN: Skipped selecting an init system because it looks like we are running in a container
+[2017-10-01T10:26:44+00:00] INFO: execute[/opt/gitlab/embedded/service/gitlab-shell/bin/gitlab-keys check-permissions] ran successfully
+[2017-10-01T10:26:48+00:00] INFO: execute[chown -R root:root /opt/gitlab/embedded/service/gitlab-rails/public] ran successfully
+[2017-10-01T10:26:50+00:00] INFO: template[/var/opt/gitlab/redis/redis.conf] backed up to /opt/gitlab/embedded/cookbooks/cache/backup/var/opt/gitlab/redis/redis.conf.chef-20171001102650.208414
+[2017-10-01T10:26:50+00:00] INFO: template[/var/opt/gitlab/redis/redis.conf] updated file contents /var/opt/gitlab/redis/redis.conf
+[2017-10-01T10:26:50+00:00] INFO: template[/var/opt/gitlab/redis/redis.conf] owner changed to 997
+[2017-10-01T10:26:50+00:00] INFO: directory[/opt/gitlab/sv/redis] created directory /opt/gitlab/sv/redis
+[2017-10-01T10:26:50+00:00] INFO: directory[/opt/gitlab/sv/redis] owner changed to 0
+[2017-10-01T10:26:50+00:00] INFO: directory[/opt/gitlab/sv/redis] group changed to 0
+[2017-10-01T10:26:50+00:00] INFO: directory[/opt/gitlab/sv/redis] mode changed to 755
+[2017-10-01T10:26:50+00:00] INFO: directory[/opt/gitlab/sv/redis/log] created directory /opt/gitlab/sv/redis/log
+[2017-10-01T10:26:50+00:00] INFO: directory[/opt/gitlab/sv/redis/log] owner changed to 0
+[2017-10-01T10:26:50+00:00] INFO: directory[/opt/gitlab/sv/redis/log] group changed to 0
+[2017-10-01T10:26:50+00:00] INFO: directory[/opt/gitlab/sv/redis/log] mode changed to 755
+[2017-10-01T10:26:50+00:00] INFO: directory[/opt/gitlab/sv/redis/log/main] created directory /opt/gitlab/sv/redis/log/main
+[2017-10-01T10:26:50+00:00] INFO: directory[/opt/gitlab/sv/redis/log/main] owner changed to 0
+[2017-10-01T10:26:50+00:00] INFO: directory[/opt/gitlab/sv/redis/log/main] group changed to 0
+[2017-10-01T10:26:50+00:00] INFO: directory[/opt/gitlab/sv/redis/log/main] mode changed to 755
+[2017-10-01T10:26:50+00:00] INFO: template[/opt/gitlab/sv/redis/run] created file /opt/gitlab/sv/redis/run
+[2017-10-01T10:26:50+00:00] INFO: template[/opt/gitlab/sv/redis/run] updated file contents /opt/gitlab/sv/redis/run
+[2017-10-01T10:26:50+00:00] INFO: template[/opt/gitlab/sv/redis/run] owner changed to 0
+[2017-10-01T10:26:50+00:00] INFO: template[/opt/gitlab/sv/redis/run] group changed to 0
+[2017-10-01T10:26:50+00:00] INFO: template[/opt/gitlab/sv/redis/run] mode changed to 755
+[2017-10-01T10:26:50+00:00] INFO: template[/opt/gitlab/sv/redis/log/run] created file /opt/gitlab/sv/redis/log/run
+[2017-10-01T10:26:50+00:00] INFO: template[/opt/gitlab/sv/redis/log/run] updated file contents /opt/gitlab/sv/redis/log/run
+[2017-10-01T10:26:50+00:00] INFO: template[/opt/gitlab/sv/redis/log/run] owner changed to 0
+[2017-10-01T10:26:50+00:00] INFO: template[/opt/gitlab/sv/redis/log/run] group changed to 0
+[2017-10-01T10:26:50+00:00] INFO: template[/opt/gitlab/sv/redis/log/run] mode changed to 755
+[2017-10-01T10:26:50+00:00] INFO: template[/var/log/gitlab/redis/config] created file /var/log/gitlab/redis/config
+[2017-10-01T10:26:50+00:00] INFO: template[/var/log/gitlab/redis/config] updated file contents /var/log/gitlab/redis/config
+[2017-10-01T10:26:50+00:00] INFO: template[/var/log/gitlab/redis/config] owner changed to 0
+[2017-10-01T10:26:50+00:00] INFO: template[/var/log/gitlab/redis/config] group changed to 0
+[2017-10-01T10:26:50+00:00] INFO: link[/opt/gitlab/init/redis] created
+[2017-10-01T10:26:50+00:00] INFO: link[/opt/gitlab/service/redis] created

@@ -1,0 +1,65 @@
+git_ssl:
+  container_name: git_ssl
+  image: linuxserver/letsencrypt
+  volumes:
+    - ./config/ssl:/config
+  environment:
+    - EMAIL=test@sdkfs.com
+    - URL=node.gotechnies.com
+    - ONLY_SUBDOMAINS=node.gotechnies.com
+  ports:
+    - "443:443"
+
+web:
+  image: 'gitlab/gitlab-ce:latest'
+  restart: always
+  hostname: 'git.xscru.com'
+  environment:
+    GITLAB_OMNIBUS_CONFIG: |
+      external_url 'https://node.gotechnies.com'
+      registry_external_url 'https://node.gotechnies.com'
+      gitlab_rails['registry_enabled'] = true
+      gitlab_rails['registry_host'] = "node.gotechnies.com"
+      nginx['ssl_certificate'] = "/etc/gitlab/ssl/keys/letsencrypt/fullchain.pem"
+      nginx['ssl_certificate_key'] = "/etc/gitlab/ssl/keys/letsencrypt/privkey.pem" 
+      registry_nginx['enable'] = true 
+      gitlab_rails['manage_backup_path'] = true
+      gitlab_rails['backup_path'] = "/var/opt/gitlab/backups"
+      gitlab_rails['backup_archive_permissions'] = 0644
+      gitlab_rails['backup_pg_schema'] = 'public'
+      gitlab_rails['backup_keep_time'] = 604800
+      gitlab_rails['backup_upload_connection'] = {
+        'provider' => 'AWS',
+        'region' => 'eu-west-1',
+        'aws_access_key_id' => 'AKIAKIAKI',
+        'aws_secret_access_key' => 'secret123'
+       }
+      gitlab_rails['backup_upload_remote_directory'] = 'my.s3.bucket'
+      gitlab_rails['backup_multipart_chunk_size'] = 104857600
+      gitlab_rails['backup_encryption'] = 'AES256'
+      gitlab_rails['backup_storage_class'] = 'STANDARD'
+      # Add any other gitlab.rb configuration here, each on its own line
+  ports:
+    - '80:80'
+    - '443:443'
+    - '2222:22'
+  volumes:
+    - './config:/etc/gitlab'
+    - './logs:/var/log/gitlab'
+    - './data:/var/opt/gitlab'
+
+registry:
+  restart: always
+  image: registry:2
+  ports:
+    - 127.0.0.1:5000:5000
+  environment:
+    - REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/data
+    - REGISTRY_LOG_LEVEL=info
+    - REGISTRY_AUTH_TOKEN_REALM=https://node.gotechnies.com/jwt/auth
+    - REGISTRY_AUTH_TOKEN_SERVICE=container_registry
+    - REGISTRY_AUTH_TOKEN_ISSUER=gitlab-issuer
+    - REGISTRY_STORAGE_DELETE_ENABLED=true
+    - REGISTRY_AUTH_TOKEN_ROOTCERTBUNDLE=/data/registry/gitlab-registry.crt
+  volumes:
+    - ./data:/data

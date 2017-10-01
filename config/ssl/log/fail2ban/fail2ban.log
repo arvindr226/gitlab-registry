@@ -1,0 +1,70 @@
+2017-10-01 09:55:50,188 fail2ban.server         [303]: INFO    --------------------------------------------------
+2017-10-01 09:55:50,188 fail2ban.server         [303]: INFO    Starting Fail2ban v0.10.0a1
+2017-10-01 09:55:50,516 fail2ban.database       [303]: INFO    Connected to fail2ban persistent database '/config/fail2ban/fail2ban.sqlite3'
+2017-10-01 09:55:50,519 fail2ban.database       [303]: WARNING New database created. Version '2'
+2017-10-01 09:55:50,526 fail2ban.jail           [303]: INFO    Creating new jail 'nginx-http-auth'
+2017-10-01 09:55:50,530 fail2ban.jail           [303]: INFO    Jail 'nginx-http-auth' uses poller
+2017-10-01 09:55:50,531 fail2ban.filter         [303]: INFO    Set jail log file encoding to UTF-8
+2017-10-01 09:55:50,531 fail2ban.jail           [303]: INFO    Initiated 'polling' backend
+2017-10-01 09:55:50,533 fail2ban.filter         [303]: INFO    Added logfile = /config/log/nginx/error.log (pos = 0, hash = d41d8cd98f00b204e9800998ecf8427e)
+2017-10-01 09:55:50,533 fail2ban.filter         [303]: INFO    Set maxRetry = 5
+2017-10-01 09:55:50,534 fail2ban.filter         [303]: INFO    Set jail log file encoding to UTF-8
+2017-10-01 09:55:50,535 fail2ban.actions        [303]: INFO    Set banTime = 600
+2017-10-01 09:55:50,536 fail2ban.filter         [303]: INFO    Set findtime = 600
+2017-10-01 09:55:50,541 fail2ban.jail           [303]: INFO    Creating new jail 'nginx-botsearch'
+2017-10-01 09:55:50,542 fail2ban.jail           [303]: INFO    Jail 'nginx-botsearch' uses poller
+2017-10-01 09:55:50,542 fail2ban.filter         [303]: INFO    Set jail log file encoding to UTF-8
+2017-10-01 09:55:50,542 fail2ban.jail           [303]: INFO    Initiated 'polling' backend
+2017-10-01 09:55:50,543 fail2ban.filter         [303]: INFO    Added logfile = /config/log/nginx/access.log (pos = 0, hash = d41d8cd98f00b204e9800998ecf8427e)
+2017-10-01 09:55:50,544 fail2ban.filter         [303]: INFO    Set maxRetry = 2
+2017-10-01 09:55:50,545 fail2ban.filter         [303]: INFO    Set jail log file encoding to UTF-8
+2017-10-01 09:55:50,545 fail2ban.actions        [303]: INFO    Set banTime = 600
+2017-10-01 09:55:50,546 fail2ban.filter         [303]: INFO    Set findtime = 600
+2017-10-01 09:55:50,555 fail2ban.jail           [303]: INFO    Creating new jail 'nginx-badbots'
+2017-10-01 09:55:50,555 fail2ban.jail           [303]: INFO    Jail 'nginx-badbots' uses poller
+2017-10-01 09:55:50,556 fail2ban.filter         [303]: INFO    Set jail log file encoding to UTF-8
+2017-10-01 09:55:50,556 fail2ban.jail           [303]: INFO    Initiated 'polling' backend
+2017-10-01 09:55:50,557 fail2ban.filter         [303]: INFO    Added logfile = /config/log/nginx/access.log (pos = 0, hash = d41d8cd98f00b204e9800998ecf8427e)
+2017-10-01 09:55:50,557 fail2ban.filter         [303]: INFO    Set maxRetry = 2
+2017-10-01 09:55:50,559 fail2ban.filter         [303]: INFO    Set jail log file encoding to UTF-8
+2017-10-01 09:55:50,559 fail2ban.actions        [303]: INFO    Set banTime = 600
+2017-10-01 09:55:50,560 fail2ban.filter         [303]: INFO    Set findtime = 600
+2017-10-01 09:55:50,600 fail2ban.jail           [303]: INFO    Jail 'nginx-http-auth' started
+2017-10-01 09:55:50,612 fail2ban.jail           [303]: INFO    Jail 'nginx-botsearch' started
+2017-10-01 09:55:50,614 fail2ban.jail           [303]: INFO    Jail 'nginx-badbots' started
+2017-10-01 09:55:50,637 fail2ban.utils          [303]: ERROR   iptables -w -N f2b-nginx-http-auth
+iptables -w -A f2b-nginx-http-auth -j RETURN
+iptables -w -I INPUT -p tcp -m multiport --dports http,https -j f2b-nginx-http-auth -- stderr:
+2017-10-01 09:55:50,637 fail2ban.utils          [303]: ERROR    -- stderr: "iptables v1.6.1: can't initialize iptables table `filter': Permission denied (you must be root)"
+2017-10-01 09:55:50,637 fail2ban.utils          [303]: ERROR    -- stderr: 'Perhaps iptables or your kernel needs to be upgraded.'
+2017-10-01 09:55:50,638 fail2ban.utils          [303]: ERROR    -- stderr: "iptables v1.6.1: can't initialize iptables table `filter': Permission denied (you must be root)"
+2017-10-01 09:55:50,638 fail2ban.utils          [303]: ERROR    -- stderr: 'Perhaps iptables or your kernel needs to be upgraded.'
+2017-10-01 09:55:50,638 fail2ban.utils          [303]: ERROR    -- stderr: 'getsockopt failed strangely: Operation not permitted'
+2017-10-01 09:55:50,638 fail2ban.utils          [303]: ERROR   iptables -w -N f2b-nginx-http-auth
+iptables -w -A f2b-nginx-http-auth -j RETURN
+iptables -w -I INPUT -p tcp -m multiport --dports http,https -j f2b-nginx-http-auth -- returned 1
+2017-10-01 09:55:50,638 fail2ban.actions        [303]: ERROR   Failed to start jail 'nginx-http-auth' action 'iptables-multiport': Error starting action Jail('nginx-http-auth')/iptables-multiport
+2017-10-01 09:55:50,652 fail2ban.utils          [303]: ERROR   iptables -w -N f2b-nginx-botsearch
+iptables -w -A f2b-nginx-botsearch -j RETURN
+iptables -w -I INPUT -p tcp -m multiport --dports http,https -j f2b-nginx-botsearch -- stderr:
+2017-10-01 09:55:50,652 fail2ban.utils          [303]: ERROR    -- stderr: "iptables v1.6.1: can't initialize iptables table `filter': Permission denied (you must be root)"
+2017-10-01 09:55:50,653 fail2ban.utils          [303]: ERROR    -- stderr: 'Perhaps iptables or your kernel needs to be upgraded.'
+2017-10-01 09:55:50,653 fail2ban.utils          [303]: ERROR    -- stderr: "iptables v1.6.1: can't initialize iptables table `filter': Permission denied (you must be root)"
+2017-10-01 09:55:50,653 fail2ban.utils          [303]: ERROR    -- stderr: 'Perhaps iptables or your kernel needs to be upgraded.'
+2017-10-01 09:55:50,653 fail2ban.utils          [303]: ERROR    -- stderr: 'getsockopt failed strangely: Operation not permitted'
+2017-10-01 09:55:50,653 fail2ban.utils          [303]: ERROR   iptables -w -N f2b-nginx-botsearch
+iptables -w -A f2b-nginx-botsearch -j RETURN
+iptables -w -I INPUT -p tcp -m multiport --dports http,https -j f2b-nginx-botsearch -- returned 1
+2017-10-01 09:55:50,653 fail2ban.actions        [303]: ERROR   Failed to start jail 'nginx-botsearch' action 'iptables-multiport': Error starting action Jail('nginx-botsearch')/iptables-multiport
+2017-10-01 09:55:50,667 fail2ban.utils          [303]: ERROR   iptables -w -N f2b-nginx-badbots
+iptables -w -A f2b-nginx-badbots -j RETURN
+iptables -w -I INPUT -p tcp -m multiport --dports http,https -j f2b-nginx-badbots -- stderr:
+2017-10-01 09:55:50,667 fail2ban.utils          [303]: ERROR    -- stderr: "iptables v1.6.1: can't initialize iptables table `filter': Permission denied (you must be root)"
+2017-10-01 09:55:50,668 fail2ban.utils          [303]: ERROR    -- stderr: 'Perhaps iptables or your kernel needs to be upgraded.'
+2017-10-01 09:55:50,668 fail2ban.utils          [303]: ERROR    -- stderr: "iptables v1.6.1: can't initialize iptables table `filter': Permission denied (you must be root)"
+2017-10-01 09:55:50,668 fail2ban.utils          [303]: ERROR    -- stderr: 'Perhaps iptables or your kernel needs to be upgraded.'
+2017-10-01 09:55:50,668 fail2ban.utils          [303]: ERROR    -- stderr: 'getsockopt failed strangely: Operation not permitted'
+2017-10-01 09:55:50,668 fail2ban.utils          [303]: ERROR   iptables -w -N f2b-nginx-badbots
+iptables -w -A f2b-nginx-badbots -j RETURN
+iptables -w -I INPUT -p tcp -m multiport --dports http,https -j f2b-nginx-badbots -- returned 1
+2017-10-01 09:55:50,669 fail2ban.actions        [303]: ERROR   Failed to start jail 'nginx-badbots' action 'iptables-multiport': Error starting action Jail('nginx-badbots')/iptables-multiport
